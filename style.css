@@ -369,6 +369,28 @@ h1 span { color: var(--purple); }
 .memory-card.is-matched .card-front { background: #eaf8f1; border-color: #d3efe2; }
 .memory-card:disabled { cursor: default; }
 
+.game-message {
+  display: flex;
+  min-height: 35px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  color: #888398;
+  font-size: 11px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.game-message:empty { min-height: 0; margin-top: 0; }
+.game-message.is-win {
+  min-height: 38px;
+  padding: 8px 12px;
+  color: #39886e;
+  background: #eaf8f1;
+  border-radius: 11px;
+  font-weight: 700;
+}
+
 .game-footer {
   display: flex;
   align-items: center;
