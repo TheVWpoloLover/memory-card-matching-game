@@ -146,14 +146,16 @@ function flipCard(card) {
 
   lockBoard = true;
   status.textContent = "Not a match. Cards will turn back over.";
+  const unmatchedFirst = firstCard;
+  const unmatchedSecond = secondCard;
   window.setTimeout(() => {
-    firstCard.classList.remove("is-flipped");
-    secondCard.classList.remove("is-flipped");
-    firstCard.setAttribute("aria-pressed", "false");
-    secondCard.setAttribute("aria-pressed", "false");
-    firstCard.setAttribute("aria-label", "Hidden card");
-    secondCard.setAttribute("aria-label", "Hidden card");
-    resetTurn();
+    unmatchedFirst.classList.remove("is-flipped");
+    unmatchedSecond.classList.remove("is-flipped");
+    unmatchedFirst.setAttribute("aria-pressed", "false");
+    unmatchedSecond.setAttribute("aria-pressed", "false");
+    unmatchedFirst.setAttribute("aria-label", "Hidden card");
+    unmatchedSecond.setAttribute("aria-label", "Hidden card");
+    if (firstCard === unmatchedFirst && secondCard === unmatchedSecond) resetTurn();
   }, 850);
 }
 
