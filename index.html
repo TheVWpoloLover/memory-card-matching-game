@@ -73,7 +73,7 @@
           </div>
         </div>
 
-        <div class="progress-track" aria-label="Matched pairs progress">
+        <div class="progress-track" id="progress-track" role="progressbar" aria-label="Matched pairs" aria-valuemin="0" aria-valuemax="8" aria-valuenow="0">
           <div class="progress-fill" id="progress"></div>
         </div>
 
@@ -85,7 +85,7 @@
           <span class="footer-dot" aria-hidden="true">·</span>
           <span id="best-score">Best: —</span>
         </div>
-        <p class="sr-only" id="game-status" aria-live="polite" aria-atomic="true"></p>
+        <div class="game-message" id="game-status" aria-live="polite" aria-atomic="true"></div>
       </div>
     </section>
 
