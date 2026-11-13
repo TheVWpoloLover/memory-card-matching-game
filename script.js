@@ -10,6 +10,7 @@ const moveDisplay = document.querySelector("#moves");
 const timeDisplay = document.querySelector("#time");
 const pairDisplay = document.querySelector("#pairs");
 const progress = document.querySelector("#progress");
+const progressTrack = document.querySelector("#progress-track");
 const difficulty = document.querySelector("#difficulty");
 const bestDisplay = document.querySelector("#best-score");
 const status = document.querySelector("#game-status");
@@ -76,6 +77,8 @@ function updateStats() {
   timeDisplay.textContent = formatTime(seconds);
   pairDisplay.textContent = matchedPairs + " / " + LEVELS[currentLevel].pairs;
   progress.style.width = (matchedPairs / LEVELS[currentLevel].pairs) * 100 + "%";
+  progressTrack.setAttribute("aria-valuemax", String(LEVELS[currentLevel].pairs));
+  progressTrack.setAttribute("aria-valuenow", String(matchedPairs));
 }
 
 function makeCard(symbol, index) {
@@ -101,6 +104,8 @@ function newGame() {
   seconds = 0;
   started = false;
   currentLevel = difficulty.value;
+  status.classList.remove("is-win");
+  status.textContent = "";
 
   const symbols = SYMBOLS.slice(0, LEVELS[currentLevel].pairs);
   const cards = shuffle([...symbols, ...symbols]);
@@ -177,7 +182,8 @@ function finishGame() {
     }
   }
   updateBestLabel();
-  status.textContent = "You found every pair in " + moves + " moves and " + formatTime(seconds) + (isNewBest ? ". New personal best!" : ". Well played!");
+  status.classList.add("is-win");
+  status.textContent = "Lovely work! You found every pair in " + moves + " moves and " + formatTime(seconds) + (isNewBest ? ". A new personal best!" : ". Well played!");
 }
 
 difficulty.addEventListener("change", newGame);
